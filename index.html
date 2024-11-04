@@ -1,0 +1,249 @@
+<!--
+Validation:
+HTML: https://validator.w3.org
+CSS: https://jigsaw.w3.org/css-validator/
+
+Structure:
+https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure
+
+More notes here: C:\WebProjects\LearningHTML\learningHTMLandJS.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Keywords for search engines (search engines don't really use this anymore, though) -->
+    <meta name="keywords" content="HTML, CSS">
+    <!-- Description that is shown on search engines. -->
+    <meta name="description" content="...">
+    <title>My first web page</title>
+    <!-- 
+    CSS:
+        Selectors:
+            1. Element: 
+                This will apply to all p elements.
+                p {
+                    font-size: xx-large;
+                }
+
+            2. Class: 
+                This will apply to all elements with class="username". Elements can have multiple classes.
+                .username {
+                    font-weight: bold;
+                }
+
+            3. ID:
+                This will apply to all elements with id="pope-meme". Elements can only have one id.
+                #pope-meme {
+                    width: 400px;
+                    height: 400px;
+                    object-fit: contain;
+                }
+        Combining Selectors:
+            1. "," = "and"
+            2. " " = "children"
+            3. ">" = "one level deep"
+            -->
+    <style>
+        p {
+            font-size: xx-large;
+        }
+
+        a {
+            font-size: xx-large;
+        }
+
+        img.profilePic {
+            width: 400px;
+            border-radius: 200px;
+            float: left;
+            margin-right: 10px;
+        }
+
+        img.clickableBurger {
+            width: 400px;
+            float: left;
+            margin-right: 10px;
+        }
+
+        #pope-meme {
+            width: 400px;
+            height: 400px;
+            object-fit: contain;
+        }
+
+        .username {
+            font-weight: bold;
+        }
+
+        em {
+            color: red;
+            font-style: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Headings 1-6 are a hierarchy for showing the search engine what the webpage is about. They
+    should not be used for styling. -->
+    <!-- The image element does not have a closing tag because it cannot have child elements. -->
+    <img class="profilePic" src="images/young_trump.jpg" alt="An image of young Trump">
+    <img id="pope-meme" src="images/pope-francis-get-in.jpg" alt="">
+    <p class="username">@NuGroyper</p>
+
+    <!-- The 'em' element tells search engines and screen readers to emphasize the given text, and the 
+    'strong' element tells search engines and screen readers that this is important text. -->
+    <p>Imagine eating this <em>good</em>.</p>
+
+    <!-- These are HTML entities. -->
+    <p>&lt;p&gt;</p> <!-- <p> -->
+    <p>&copy;</p> <!-- This displays the copyright symbol. -->
+
+    <!-- If you type 'lorem50' and then press tab, you will get dummy text that is 50 words long. I
+    also added a non-breaking space between 'harum' and 'nam', so now they will have a space but not
+    be separated no matter what the size of the page is. The non-breaking space entity is '$nbsp;'-->
+    <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo cum, illo et voluptates
+        consectetur dicta amet aliquid incidunt harum&nbsp;nam ducimus deserunt blanditiis deleniti
+        quasi. Delectus dignissimos odio quam praesentium a sequi cum doloremque eum? Accusantium
+        eveniet asperiores, nihil praesentium rem molestiae laudantium nisi beatae aspernatur?
+        Dignissimos repellendus exercitationem et!
+    </p>
+
+    <!-- 'a' is for 'anchor'. -->
+    <!-- Note: Giving images a descriptive name and a alt descriptive attribute helps search engines
+    understand and index your page. The alt attribute is also for accessibility for visually impaired
+    people, as well as a placeholder if the image cannot be loaded. -->
+    <a href="company/about.html">
+        <img class="clickableBurger" src="images/burger1.png" alt="">
+    </a>
+    <a href="images/burger2.png">Click Here To See A Delicious Burger!</a>
+    <a href="images/burger3.png" download>Click Here To *DOWNLOAD* A Delicious Burger!</a>
+    <a href="#section-css">CSS</a>
+    <!-- Setting the 'target' attribute to '_blank' goes to the link in a new tab. -->
+    <a href="https://google.com" target="_blank">Google</a>
+    <a href="mailto:brendanbaia1997@gmail.com">Email Me</a>
+    <!-- <span> and <div> are containers to group elements for styling purposes, the difference is that
+    <span> is inline (only takes up as much width as necessary and does not start on a new line) and
+    <div> is block-level (takes up the full width available and starts on a new line). -->
+    <h1>
+        <span style="background-color: red;">This is a span title</span>
+    </h1>
+    <h1>
+        <div style="background-color: cyan;">This is a div title</div>
+    </h1>
+
+    <form action="" method="get" class="form-example">
+        <div class="form-example">
+            <label for="name">Enter your name: </label>
+            <input type="text" name="name" id="name" required />
+        </div>
+        <div class="form-example">
+            <label for="email">Enter your email: </label>
+            <input type="email" name="email" id="email" required />
+        </div>
+        <div class="form-example">
+            <input type="submit" value="Subscribe!" />
+        </div>
+    </form>
+
+    <h2>HTML</h2>
+    <p><span style="background-color: red;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt hic nihil
+            dolorum est dicta dignissimos, neque
+            aspernatur consequatur culpa molestiae esse sunt natus vero repellendus necessitatibus odio odit aperiam
+            cumque
+            quo quod magni! Quas repellat ipsam provident nisi, illo blanditiis voluptatibus quod ea illum architecto
+            error,
+            magni vitae labore tempore beatae neque repellendus. Aspernatur adipisci, magni necessitatibus eius fugit
+            aperiam vero consequatur voluptas ipsa quibusdam nemo, ab amet minus illo labore, repellat nobis
+            reprehenderit
+            officia perferendis debitis in ipsum! Deleniti expedita facilis eaque nesciunt adipisci iure, ad similique,
+            molestias repudiandae ullam quisquam. Quia temporibus hic necessitatibus illo odio adipisci delectus eos.
+            Quaerat consectetur quidem officia facere qui labore recusandae adipisci at quas? Natus doloribus eum
+            quaerat,
+            dolorem expedita quis modi tempore aliquam aperiam dolores sunt mollitia praesentium minima harum non vero
+            iste!
+            Iste provident voluptas officia ea ipsum aut voluptates laborum tempora ut qui minus nisi nulla, fugiat
+            velit
+            iure quo nobis eius, porro libero. Corporis sed ducimus, at facilis impedit maxime consequatur recusandae
+            maiores voluptatum excepturi hic nam quos quisquam. Ipsam, quia. Ipsam asperiores magnam facilis iure ex
+            quam
+            omnis quae magni fuga consectetur molestias harum est deserunt inventore, reprehenderit incidunt
+            consequuntur at
+            consequatur a error illum. Illum dolores similique labore facere nesciunt, quibusdam aliquid eius
+            consequatur
+            tenetur doloremque maiores nisi libero rem officiis veniam, iste praesentium dolor magnam. Dicta
+            consequatur,
+            quos in qui est eaque id animi nesciunt blanditiis vitae vel libero modi cumque molestias quibusdam commodi
+            molestiae quo explicabo illo doloribus facilis facere. Modi, ex dolores. Consectetur, error eligendi sunt
+            omnis
+            repellat saepe doloremque pariatur ad aut eos autem vero dolores harum! Suscipit pariatur, recusandae
+            blanditiis
+            sunt tenetur fugiat odio, quasi ratione dolor fugit perspiciatis architecto illum in quo consectetur
+            reprehenderit voluptates incidunt. Tenetur laborum, qui consequuntur perspiciatis repellat hic illum animi
+            molestiae, quod dignissimos, nihil eum ducimus omnis ipsum fugiat suscipit nam sint et. Explicabo, vel? Unde
+            quaerat consequuntur veritatis quo qui minus aliquid dicta numquam eligendi saepe, suscipit ipsam! Nesciunt
+            fugit non eos minus? Possimus, autem culpa? Dolorem aperiam, illum reiciendis quaerat ea quia repudiandae
+            quas
+            molestiae qui unde est laudantium nihil sit, delectus tenetur odio eligendi! Accusantium dolorem, quam
+            numquam
+            facilis ullam quae aut ab placeat totam sit doloribus reiciendis eligendi quia, ducimus neque aperiam
+            veritatis
+            voluptatibus quidem rerum exercitationem impedit maxime nisi! Saepe quaerat ex ipsam. Doloremque rerum
+            cumque,
+            non sint aliquam facere deserunt assumenda sapiente veritatis dolor nesciunt id rem fugit distinctio
+            molestiae
+            magni nulla quisquam ipsa corrupti dicta inventore voluptate voluptatem exercitationem. Dolor delectus quam
+            quibusdam quaerat porro! Iure cumque facilis nihil suscipit ab totam dolor est, natus numquam pariatur qui
+            corrupti dignissimos tenetur libero voluptatem animi laboriosam beatae provident consequuntur enim quae
+            iusto
+            aut! Amet ratione quasi officia atque asperiores assumenda maxime eum explicabo molestias unde dolores nam
+            tempore vel aut nihil repellat veniam et, at dolorem laboriosam exercitationem aliquid commodi dicta
+            deleniti.
+            Qui, repudiandae corporis natus eligendi quibusdam illum, unde molestiae laudantium voluptate optio impedit
+            obcaecati voluptatum suscipit tempora eaque vero quos fuga vitae assumenda magnam repellendus numquam?
+            Quae!</span></p>
+    <h2 id="section-css">CSS</h2>
+    <div style="background-color: cyan; font-size: xx-large;">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+        Unde necessitatibus explicabo animi, deleniti, dolores
+        repellat aut debitis, corrupti provident cumque est placeat optio sapiente labore molestias fugiat magni? Sit
+        non tenetur provident, quod, dolore impedit voluptas magnam eos modi nam fugit minus placeat deleniti quidem,
+        cum consectetur fuga corporis unde quo inventore aspernatur ipsa. In perspiciatis est pariatur delectus,
+        doloribus qui? Quae totam, cupiditate quis sint nisi voluptates doloremque molestias eum libero asperiores
+        reiciendis amet placeat est eius necessitatibus, neque doloribus quisquam molestiae quia, officiis numquam sunt.
+        Impedit accusantium saepe, ipsam, beatae quaerat cumque omnis quas molestiae tempora eius at. Dignissimos quam
+        molestiae quasi assumenda nihil dolore hic illo distinctio sit officiis, laudantium doloremque quas quisquam
+        suscipit et culpa esse, maxime perferendis tempore! Maxime libero magnam nostrum accusantium accusamus quisquam
+        ipsum itaque, dolorum eveniet perferendis cupiditate eum ratione adipisci quia laboriosam molestiae, tempora vel
+        distinctio harum? Consectetur nam reprehenderit rerum maxime dolor, alias, porro, tempora et dignissimos
+        consequatur illum accusamus dicta explicabo! Laudantium repudiandae qui ipsam consequatur repellat, rerum optio
+        nostrum minus veritatis ad ducimus! A quis assumenda laudantium animi iure enim iste inventore voluptatum
+        voluptas nesciunt eaque ea, earum, suscipit tempore esse autem veniam repellendus voluptate quia reprehenderit
+        aliquid itaque. Iure sit autem libero aut consequatur ad a reiciendis ipsam, repudiandae voluptates nostrum, vel
+        eligendi soluta magni sed quae expedita amet quasi. Molestiae doloribus eveniet sapiente, excepturi deleniti
+        cumque modi iure quis pariatur nihil libero a illum, alias dolorum et adipisci repellendus laudantium aliquam
+        ratione deserunt minima enim. Beatae maxime officia tenetur illum magni cupiditate quos! Rerum officiis, ratione
+        minima adipisci debitis voluptas. Molestiae, optio soluta! Eaque suscipit ducimus, reiciendis tempore iste
+        tempora, accusantium cupiditate blanditiis, quidem eius modi beatae. Architecto ex doloribus labore! Ipsa
+        nostrum natus necessitatibus deleniti facilis eligendi, consequatur repellat, dolorum saepe, similique
+        reprehenderit ducimus? Est provident quam at nemo. Repudiandae aliquid mollitia, accusantium perferendis ipsa
+        possimus consequuntur itaque harum labore totam ad non nisi vitae reprehenderit libero quod, sequi veniam quo
+        numquam unde eaque eos quasi. Neque possimus blanditiis reiciendis quae? Quisquam, quaerat ipsum, voluptates,
+        laboriosam nisi amet officiis voluptatem quo reiciendis consequatur quas voluptate ullam? Commodi repudiandae
+        ratione aliquam rerum, corrupti, dignissimos minima aspernatur explicabo quasi temporibus officia, accusantium
+        mollitia voluptatum optio saepe natus expedita odit nobis adipisci quo harum maiores. Placeat quibusdam quam
+        velit dolor possimus magni perspiciatis, eaque, qui provident eveniet fugit cum voluptates quod saepe non
+        voluptas error sint ipsum, assumenda commodi voluptatem iure ad labore? Commodi enim magnam, odit, labore
+        voluptatum quae dolorum aut inventore mollitia quas explicabo rerum sunt illum molestias. Perferendis eaque sed
+        quam quas aperiam, nobis pariatur illum provident at sapiente repudiandae quos doloremque omnis ullam ipsam et
+        tempora ad laborum eligendi, recusandae maxime. Tempore eveniet, eaque quibusdam aliquid corporis perspiciatis.
+        Enim officiis fuga facere voluptas asperiores earum voluptatem illo corporis fugit ad omnis quas amet alias
+        atque quo numquam, beatae reiciendis incidunt impedit reprehenderit, consectetur tempore, minus quae? Facilis
+        similique sit odit animi quae minus nisi iusto recusandae maiores commodi aliquid voluptate ab repudiandae,
+        corporis ea.</div>
+    <a href="#">Jump to top</a>
+</body>
+
+</html>

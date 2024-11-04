@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model Demo</title>
+
+    <style>
+        * {
+            border: 1px solid
+        }
+    </style>
+</head>
+
+<body>
+    <div>Hierarchy: Parent / Element: div / Display type: block (default)
+        <div>Hierarchy: child (1) / Element: div</div>
+        <div>Hierarchy: child (2) / Element: div</div>
+        <div>Hierarchy: child (3) / Element: div</div>
+    </div>
+    <!-- There is also inline, inline-flex, and inline-grid which all are inline-level. Flex and grid 
+    are block-level. -->
+    <div style="display: inline-block;">Hierarchy: Parent / Element: div / Display type: inline-block
+        <div>Hierarchy: child (1) / Element: div</div>
+        <div>Hierarchy: child (2) / Element: div</div>
+        <div>Hierarchy: child (3) / Element: div</div>
+    </div>
+    <div style="display: flex;">Hierarchy: Parent / Element: div / Display type: flex
+        <div>Hierarchy: child (1) / Element: div</div>
+        <div>Hierarchy: child (2) / Element: div</div>
+        <div>Hierarchy: child (3) / Element: div</div>
+    </div>
+    <div style="display: grid;">Hierarchy: Parent / Element: div / Display type: grid
+        <div>Hierarchy: child (1) / Element: div</div>
+        <div>Hierarchy: child (2) / Element: div</div>
+        <div>Hierarchy: child (3) / Element: div</div>
+    </div>
+
+    <!-- <div class="wrapper">
+        <div class="box1">One</div>
+        <div class="box2">Two</div>
+        <div class="box3">Three</div>
+    </div> -->
+</body>
+
+</html>
