@@ -8,7 +8,6 @@
     <style>
         body {
             width: 90%;
-            max-width: 900px;
             margin: 2em auto;
             font: .9em/1.2 Arial, Helvetica, sans-serif;
         }
@@ -20,23 +19,46 @@
             border: 2px solid rgb(79, 185, 227);
         }
 
+        .containerTwo>div {
+            border-radius: 5px;
+            padding: 10px;
+            background-color: rgb(232, 207, 207);
+            border: 2px solid rgb(79, 185, 227);
+        }
+
         .container {
+            margin: 20px 0;
             display: grid;
-            /* 
-            fr stands for fraction 
-            
-            repeat(2, 1fr) = 1fr 1fr
-            */
+            /* (fr stands for fraction) "repeat(2, 1fr)" = "1fr 1fr" */
             grid-template-columns: 2fr repeat(2, 1fr);
-            grid-template-rows: 100px; 
+            /* Explicitly generating two rows each 100px tall. */
+            grid-template-rows: 100px 100px;
+            /* Subsequent implicitly generated rows will be min 200px tall. */
             grid-auto-rows: minmax(200px, auto);
             gap: 20px;
+        }
+
+        .containerTwo {
+            margin: 20px 0;
+            display: grid;
+            /* A repeated amount of columns min 200px wide each taking up an equal fraction of the 
+            entire width of the container. */
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-auto-rows: minmax(100px, auto);
+            gap: 20px;
+        }
+
+        .line {
+            width: 95%;
+            height: 2px;
+            background-color: #000000;
+            margin: 20px auto;
         }
     </style>
 </head>
 
 <body>
-    <h1>Simple grid example</h1>
+    <h1>Simple grid example:</h1>
 
     <div class="container">
         <div>One</div>
@@ -46,6 +68,24 @@
         <div>Five</div>
         <div>Six</div>
         <div>Seven</div>
+        <div>Eight</div>
+        <div>Nine</div>
+        <div>Ten</div>
+    </div>
+
+    <div class="line"></div>
+
+    <div class="containerTwo">
+        <div>One</div>
+        <div>Two</div>
+        <div>Three</div>
+        <div>Four</div>
+        <div>Five</div>
+        <div>Six</div>
+        <div>Seven</div>
+        <div>Eight</div>
+        <div>Nine</div>
+        <div>Ten</div>
     </div>
 
 </body>
