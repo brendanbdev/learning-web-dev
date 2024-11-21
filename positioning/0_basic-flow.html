@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Basic document flow</title>
+
+  <style>
+    body {
+      width: 500px;
+      height: 5000px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    h1 {
+      position: fixed;
+      top: 0;
+      width: 500px;
+      margin-top: 0;
+      background: white;
+      padding: 10px;
+      z-index: 2;
+    }
+
+    p:nth-of-type(1) {
+      margin-top: 210px;
+    }
+
+    p {
+      background: aqua;
+      border: 3px solid blue;
+      padding: 10px;
+      margin: 10px;
+    }
+
+    span {
+      background: red;
+      border: 1px solid black;
+    }
+
+    .relative-positioning {
+      /* Relative positioning positions an element relative to where it normally would be. */
+      position: relative;
+      top: 50px;
+      left: 50px;
+      background: yellow;
+    }
+
+    .absolute-positioning {
+      /* 
+      Absolute positioning takes an element out of the normal document flow and sets its position 
+      absolutely relative position of it's ancestor.
+
+      Setting these values would make the element fill up the entire ancestor: 
+      top: 0; 
+      bottom: 0; 
+      left: 0; 
+      right: 0; 
+      margin: 0; 
+
+      If no ancestor elements have their position property explicitly defined, then by default all 
+      ancestor elements will have a static position. The result of this is the absolutely positioned 
+      element will be contained in the initial containing block. The initial containing block has the 
+      dimensions of the viewport and is also the block that contains the <html> element. In other 
+      words, the absolutely positioned element will be displayed outside of the <html> element and be 
+      positioned relative to the initial viewport.
+      */
+      position: absolute;
+      top: 30px;
+      left: 30px;
+
+      background: yellow;
+    }
+
+    p:nth-of-type(7) {
+      position: absolute;
+      background: lime;
+      top: 325px;
+      left: 42px;
+      z-index: 1;
+    }
+
+    .sticky-positioning {
+      position: sticky;
+      top: 210px;
+      background: yellow;
+    }
+
+    dt {
+      background-color: black;
+      color: white;
+      padding: 10px;
+      position: sticky;
+      top: 275px;
+      left: 0;
+      margin: 1em 0;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>This is a "fixed" positioned h1 (scroll down): position: fixed; top: 0; width: 500px
+    ;margin-top: 0; background: white; padding: 10px; z-index: 2;</h1>
+
+  <p>1. I am a basic block level element. My adjacent block level elements sit on new lines below me.</p>
+
+  <p class="relative-positioning">2. Relative Positioning: position: relative; top: 50px; left: 50px;</p>
+
+  <p>3. By default we span 100% of the width of our parent element, and we are as tall as our child content. Our total
+    width and height is our content + padding + border width/height.</p>
+
+  <p class="absolute-positioning">4. Absolute Positioning: position: absolute; top: 30px; left: 30px; (body {position:
+    relative;})</p>
+
+  <p>5. We are separated by our margins. Because of margin collapsing, we are separated by the width of one of our
+    margins, not both.</p>
+
+  <p>6. This &lt;p&gt; should be under the seventh &lt;p&gt;, despite being first in the source order, because it has
+    a(n) undefined/default/auto z-index value (0).</p>
+
+  <p>7. Absolute Positioning: This &lt;p&gt; should be above the sixth &lt;p&gt;, despite being second in the source
+    order, because it has a
+    z-index value of 1 instead of 0. position: absolute; top: 325px; left: 42px; z-index: 1;</p>
+
+  <p>8. We are separated by our margins. Because of margin collapsing, we are separated by the width of one of our
+    margins, not both.</p>
+
+  <p class="sticky-positioning">9. Sticky Positioning (scroll all the way down): Basically a hybrid between relative and
+    fixed position. position: sticky; top: 210px;</p>
+
+  <p>10. inline elements <span>like this one</span> and <span>this one</span> sit on the same line as one another, and
+    adjacent text nodes, if there is space on the same line. Overflowing inline elements <span>wrap onto a new line if
+      possible — like this one containing text</span>, or just go on to a new line if not, much like this image will do:
+    <img src="long.jpg" alt="a wide but short section of a photo of several fabrics">
+  </p>
+
+  <dl>
+    <dt>A</dt>
+    <dd>Apple</dd>
+    <dd>Ant</dd>
+    <dd>Altimeter</dd>
+    <dd>Airplane</dd>
+    <dt>B</dt>
+    <dd>Bird</dd>
+    <dd>Buzzard</dd>
+    <dd>Bee</dd>
+    <dd>Banana</dd>
+    <dd>Beanstalk</dd>
+    <dt>C</dt>
+    <dd>Calculator</dd>
+    <dd>Cane</dd>
+    <dd>Camera</dd>
+    <dd>Camel</dd>
+    <dt>D</dt>
+    <dd>Duck</dd>
+    <dd>Dime</dd>
+    <dd>Dipstick</dd>
+    <dd>Drone</dd>
+    <dt>E</dt>
+    <dd>Egg</dd>
+    <dd>Elephant</dd>
+    <dd>Egret</dd>
+  </dl>
+
+
+</body>
+
+</html>
