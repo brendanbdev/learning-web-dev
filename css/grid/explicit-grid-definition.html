@@ -33,7 +33,8 @@
             grid-template-columns: 2fr repeat(2, 1fr);
             /* Explicitly generating two rows each 100px tall. */
             grid-template-rows: 100px 100px;
-            /* Subsequent implicitly generated rows will be min 200px tall. */
+            /* Subsequent implicitly generated rows (auto rows) because of inadequate width to fit all 
+            grid items will be min 200px tall. */
             grid-auto-rows: minmax(200px, auto);
             gap: 20px;
         }

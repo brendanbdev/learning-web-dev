@@ -39,18 +39,22 @@
     }
 
     /*
-    'flex' is shorthand. Mozilla advises against using the longhand flex properties unless you really 
-    have to.
+    The shorthand flex is defined as:
 
-    The first value for 'flex' is a unitless proportion value that dictates how much available space 
-    along the main axis each flex item will take up compared to other flex items. This can be 
-    specified separately using the flex-grow longhand property.
+    flex: <flex-grow> <flex-shrink> <flex-basis>;
+    
+    flex-grow: A unitless proportion value that dictates how much the element can grow relative to 
+    others.
+    flex-shrink: A unitless proportion value that dictates how much the element can shrink relative 
+    to others.
+    flex-basis: The initial size of the element before growing or shrinking.
 
-    The second is minimum size. This can be specified separately using the flex-basis longhand value.
+    If you omit flex-shrink and flex-basis, default values (1 and auto, respectively) are used.
 
-    There is a third value, a unitless proportion value, flex-shrink, which comes into play when the 
-    flex items are overflowing their container. This value specifies how much an item will shrink in 
-    order to prevent overflow.
+    Here, we are omitting the flex-shrink value.
+
+    Basically, the items start at 200px, and the amount they grow as the window widens is proportioned 
+    by the flex-grow values.
     */
     article {
       flex: 1 200px;
@@ -59,6 +63,7 @@
     article:nth-of-type(3) {
       flex: 2 200px;
     }
+    
   </style>
 </head>
 

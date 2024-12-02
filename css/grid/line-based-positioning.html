@@ -31,6 +31,12 @@
       border-right: 1px solid #999;
     }
 
+    /*
+    This is called "line-based positioning". We are creating rows and columns while simultaneously 
+    defining the element(in the selector)'s position. "grid-column: 1 / 3;" Means we want this 
+    element to start on column 1 and end at column 3. If 3 columns weren't already created, this 
+    would create 3 columns.
+    */
     header {
       grid-column: 1 / 3;
       grid-row: 1;
