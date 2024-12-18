@@ -1,21 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Media Queries: a simple mobile first design, step 1</title>
     <style>
         /*
+        This HTML document demonstrates how to use the "media" query, and it does this using "mobile 
+        first responsive design."
+
         Simplest media query syntax:
         
         @media media-type and (media-feature-rule) {
             CSS rules...
         }
-        */
 
+        It consists of:
+
+        1. A media type, which tells the browser what kind of media this code is for (all (default, 
+        if not indicated), print, or screen).
+
+        2. A media expression, which is a rule, or test that must be passed for the contained CSS 
+        to be applied.
+
+        3. A set of CSS rules that will be applied if the test passes and the media type is correct.
+
+        For example, this sets the body text color to blue if the viewport is 600 pixels or narrower:
+
+        @media screen and (max-width: 600px) {
+            body {
+                color: blue;
+            }
+        }
+
+        This changes the body text color if the device is in landscape orientation (a standard desktop 
+        view has a landscape orientation):
+
+        @media (orientation: landscape) {
+            body {
+                color: rebeccapurple;
+            }
+        }
+
+        As part of the Level 4 specification, the hover media feature was introduced. This feature 
+        means you can test if the user has the ability to hover over an element, which essentially 
+        means they are using some kind of pointing device; touchscreen and keyboard navigation does 
+        not hover.
+
+        If we know the user cannot hover, we could display some interactive features by default. For 
+        users who can hover, we might choose to make them available when a link is hovered over.
+
+        This code changes the body's text and background color when a pointer is hovering over it:
+
+        @media screen and (hover: hover) {
+            body:hover {
+                color: white;
+                background: black;
+            }
+        }
+
+        Also in Level 4 is the pointer media feature. This takes three possible values, none, fine 
+        and coarse. A fine pointer is something like a mouse or trackpad. It enables the user to 
+        precisely target a small area. A coarse pointer is your finger on a touchscreen. The value 
+        none means the user has no pointing device; perhaps they are navigating with the keyboard 
+        only or with voice commands.
+
+        Using pointer can help you to design better interfaces that respond to the type of 
+        interaction a user is having with a screen. For example, you could create larger hit areas 
+        if you know that the user is interacting with the device as a touchscreen.
+
+        This code makes the body text blue when the width of the screen is 30-50em and the 
+        orientation is landscape.
+
+        @media screen and (min-width: 30em) and (max-width: 50em) and (orientation: landscape) {
+            body {
+                color: blue;
+            }
+        }
+
+        The width expressions can also be written like this:
+
+        (30em <= width <= 50em)
+
+        You can also use "or" logic using a comma. In the below example the text will be blue if the 
+        viewport is at least 600 pixels wide OR the device is in landscape orientation:
+
+        @media screen and (min-width: 600px), screen and (orientation: landscape) {
+            body {
+                color: blue;
+            }
+        }
+
+        You can negate an entire media query by using the not operator. This reverses the meaning of 
+        the entire media query. Therefore in this next example the text will only be blue if the 
+        orientation is portrait.
+
+        @media not (orientation: landscape) {
+            body {
+                color: blue;
+            }
+        }
+
+        You can also use not to negate specific expressions. This will apply the styles if the 
+        viewport width is between 600 and 1000 pixels. This is equivalent to 
+        (600px <= width <= 1000px).
+
+        @media (not (width < 600px)) and (not (width > 1000px)) {
+            body {
+                color: blue;
+            }
+        }
+        */
     </style>
 </head>
-<body>
-    
-</body>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Media Queries: a simple mobile first design, step 1</title>
+    <style>
+        * {
+            /* Border is included in width and height. */
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 90%;
+            margin: 2em auto;
+            font:
+                1em/1.3 Arial,
+                Helvetica,
+                sans-serif;
+        }
+
+        a:link,
+        a:visited {
+            color: #333;
+        }
+
+        nav ul,
+        aside ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav a:link,
+        nav a:visited {
+            background-color: rgb(207 232 220 / 20%);
+            border: 2px solid rgb(79 185 227);
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: rgb(207 232 220 / 70%);
+        }
+
+        .related {
+            background-color: rgb(79 185 227 / 30%);
+            border: 1px solid rgb(79 185 227);
+            padding: 10px;
+        }
+
+        .sidebar {
+            background-color: rgb(207 232 220 / 50%);
+            padding: 10px;
+        }
+
+        article {
+            margin-bottom: 1em;
+        }
+
+        @media screen and (min-width: 40em) {
+            nav ul {
+                display: flex;
+            }
+
+            nav li {
+                flex: 1;
+            }
+
+            article {
+                display: grid;
+                grid-template-columns: 3fr 1fr;
+                column-gap: 20px;
+            }
+        }
+
+        @media screen and (min-width: 70em) {
+            /* <main> contains both <article> and <aside>. */
+            main {
+                display: grid;
+                grid-template-columns: 3fr 1fr;
+                column-gap: 20px;
+            }
+
+            /* This is so the elements in <article> will align with the <aside>. */
+            article {
+                margin-bottom: 0;
+            }
+
+            footer {
+                border-top: 1px solid #ccc;
+                margin-top: 2em;
+            }
+        }
+    </style>
+</head>
+<div class="wrapper">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="">About</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">Meet the team</a></li>
+                <li><a href="">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <article>
+            <div class="content">
+                <h1>Veggies!</h1>
+                <p>
+                    Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh
+                    onion daikon amaranth tatsoi tomatillo melon azuki bean garlic.
+                </p>
+
+                <p>
+                    Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot
+                    courgette tatsoi pea sprouts fava bean collard greens dandelion okra
+                    wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.
+                </p>
+
+                <p>
+                    Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce
+                    kohlrabi amaranth water spinach avocado daikon napa cabbage asparagus
+                    winter purslane kale. Celery potato scallion desert raisin horseradish
+                    spinach carrot soko. Lotus root water spinach fennel kombu maize
+                    bamboo shoot green bean swiss chard seakale pumpkin onion chickpea
+                    gram corn pea. Brussels sprout coriander water chestnut gourd swiss
+                    chard wakame kohlrabi beetroot carrot watercress. Corn amaranth
+                    salsify bunya nuts nori azuki bean chickweed potato bell pepper
+                    artichoke.
+                </p>
+
+                <p>
+                    Nori grape silver beet broccoli kombu beet greens fava bean potato
+                    quandong celery. Bunya nuts black-eyed pea prairie turnip leek lentil
+                    turnip greens parsnip. Sea lettuce lettuce water chestnut eggplant
+                    winter purslane fennel azuki bean earthnut pea sierra leone bologi
+                    leek soko chicory celtuce parsley jícama salsify.
+                </p>
+            </div>
+            <aside class="related">
+                <p>
+                    All these veggies are brought to you by the
+                    <a href="https://veggieipsum.com/">Veggie Ipsum generator</a>.
+                </p>
+            </aside>
+        </article>
+        <aside class="sidebar">
+            <h2>External vegetable-based links</h2>
+            <ul>
+                <li>
+                    <a href="https://www.thekitchn.com/how-to-cook-broccoli-5-ways-167323">
+                        How to cook broccoli
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.bbcgoodfood.com/glossary/swiss-chard">
+                        Swiss Chard
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.bbcgoodfood.com/recipes/collection/christmas-parsnip">
+                        Christmas Parsnip Recipes
+                    </a>
+                </li>
+            </ul>
+        </aside>
+    </main>
+
+    <footer>
+        <p>&copy; 2024</p>
+    </footer>
+</div>
+
+
 </html>
