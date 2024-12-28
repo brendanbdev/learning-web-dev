@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript | Events</title>
+    <style>
+        button,
+        input,
+        div {
+            display: block;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btnAnonFun">Change color</button>
+    <button id="btnEObj">Change color</button>
+    <input id="textBox" type="text" />
+    <div id="output"></div>
+    <form>
+        <div>
+            <label for="fname">First name: </label>
+            <input id="fname" type="text" />
+        </div>
+        <div>
+            <label for="lname">Last name: </label>
+            <input id="lname" type="text" />
+        </div>
+        <div>
+            <input id="submit" type="submit" />
+        </div>
+    </form>
+    <p></p>
+    <script>
+        const btnAnonFun = document.querySelector("#btnAnonFun");
+
+        function random(number) {
+            return Math.floor(Math.random() * (number + 1));
+        }
+
+        btnAnonFun.addEventListener("click", () => {
+            const rndCol = `rgb(${random(255)} ${random(255)} ${random(255)})`;
+            document.body.style.backgroundColor = rndCol;
+        });
+
+        //----------------------------------------------------------------------------------------------
+
+        const btnEObj = document.querySelector("#btnEObj");
+
+        function random(number) {
+            return Math.floor(Math.random() * (number + 1));
+        }
+
+        /*
+        Sometimes, inside an event handler function, you'll see a parameter specified with a name such 
+        as event, evt, or e. This is called the event object, and it is automatically passed to event 
+        handlers to provide extra features and information.
+
+        This way, you can '.target' any element by passing this function to the addEventListener of 
+        that element.
+        */
+        function bgChange(e) {
+            const rndCol = `rgb(${random(255)} ${random(255)} ${random(255)})`;
+            e.target.style.backgroundColor = rndCol;
+            console.log(e);
+        }
+
+        btnEObj.addEventListener("click", bgChange);
+
+        //----------------------------------------------------------------------------------------------
+
+        const textBox = document.querySelector("#textBox");
+        const output = document.querySelector("#output");
+        textBox.addEventListener("keydown", (event) => {
+            output.textContent = `You pressed "${event.key}".`;
+        });
+
+        //----------------------------------------------------------------------------------------------
+
+        const form = document.querySelector("form");
+        const fname = document.getElementById("fname");
+        const lname = document.getElementById("lname");
+        const para = document.querySelector("p");
+
+        form.addEventListener("submit", (e) => {
+            if (fname.value === "" || lname.value === "") {
+                e.preventDefault();
+                para.textContent = "You need to fill in both names!";
+            }
+        });
+    </script>
+</body>
+
+</html>

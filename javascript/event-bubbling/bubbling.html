@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event | Bubbling</title>
+</head>
+
+<body>
+    <!-- Demonstration of bubbling up. -->
+    <div id="container">
+        <button>Bubble Up Demo</button>
+    </div>
+    <!-- 
+    The <pre> element ensures that the newlines appear as line breaks in the rendered text, rather 
+    than collapsing into a single line as they would in a regular block element like <div> or <p>. 
+    -->
+    <pre id="output"></pre>
+
+    <script>
+        const output = document.querySelector("#output");
+        function handleClick(e) {
+            output.textContent += `You clicked on a ${e.currentTarget.tagName} element\n`;
+        }
+
+        const container = document.querySelector("#container");
+        const button = document.querySelector("button");
+
+        document.body.addEventListener("click", handleClick);
+        container.addEventListener("click", handleClick);
+        button.addEventListener("click", handleClick);
+    </script>
+</body>
+
+</html>
