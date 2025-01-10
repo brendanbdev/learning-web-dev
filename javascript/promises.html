@@ -1,0 +1,118 @@
+<!-- 
+Promises are the foundation of asynchronous programming in modern JavaScript. A promise is an object 
+returned by an asynchronous function, which represents the current state of the operation. At the time 
+the promise is returned to the caller, the operation often isn't finished, but the promise object 
+provides methods to handle the eventual success or failure of the operation. 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // When you use the fetch() API, you are sending an HTTP request to the server.
+        // The fetch() API is the modern, promise-based replacement for the XMLHttpRequest API.
+        const fetchPromise = fetch(
+            "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+        );
+
+        //fetch() returns a Promise object.
+        console.log(fetchPromise);
+
+        /* You can then attach handlers (.then()) to this promise object, and these handlers will be 
+        executed when the operation has succeeded or failed. When (and if) the fetch operation 
+        succeeds, the promise will call our handler, passing in a Response object, which contains the 
+        server's response. */
+        fetchPromise.then((response) => {
+            console.log(`Received response: ${response.status}`);
+        });
+
+        // Logging a message that we have started the request.
+        console.log("Started request…");
+
+        /* 
+        Output:
+
+        Promise { <state>: "pending" }
+        Started request…
+        Received response: 200 
+
+        Note that Started request… is logged before we receive the response. Unlike a synchronous 
+        function, fetch() returns while the request is still going on, enabling our program to stay 
+        responsive. The response shows the 200 (OK) status code, meaning that our request succeeded.
+        */
+
+        /* With the fetch() API, once you get a Response object, you need to call another function to 
+        get the response data. In this case, we want to get the response data as JSON, so we would 
+        call the json() method of the Response object. It turns out that json() is also asynchronous. 
+        So this is a case where we have to call two successive asynchronous functions. */
+
+        // Instead of writing it like this:
+        fetchPromise.then((response) => {
+            const jsonPromise = response.json();
+            jsonPromise.then((data) => {
+                console.log(data[0].name);
+            });
+        });
+
+        // Write it like this:
+        const fetchPromiseChaining = fetch(
+            "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+        );
+
+        fetchPromiseChaining
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(`${data[0].name} - from Promise Chaining`);
+            });
+
+        // Checking the status code in the response and throwing an error if it wasn't "OK".
+        const fetchPromiseAndCheckStatus = fetch(
+            "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+        );
+
+        fetchPromiseAndCheckStatus
+            .then((response) => {
+                // Status codes 200–299 are "ok", everything else is not.
+                if (!response.ok) {
+                    throw new Error(`HTTP error: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((data) => {
+                console.log(`${data[0].name} - from where we checked the Promise's Response Status`);
+            });
+
+        /* While the handler passed to then() is called when the asynchronous operation succeeds, the 
+        handler passed to catch() is called when the asynchronous operation fails. An asynchronous 
+        operation fails when the Promise is "Rejected", not if it is fulfilled with a "not ok" status 
+        code. The Promise is "Rejected" if 1. an error is thrown in the .then() chain, or 2. the fetch 
+        operation itself fails (e.g., the network request cannot be made). If you add catch() to the 
+        end of a promise chain, then it will be called when any of the asynchronous function calls 
+        fail. */
+        const fetchPromiseAndUseCatch = fetch(
+            "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+        );
+
+        fetchPromiseAndUseCatch
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((data) => {
+                console.log(`${data[0].name} - from where we used .catch()`);
+            })
+            .catch((error) => {
+                console.error(`Could not get products: ${error}`);
+            });
+    </script>
+</body>
+
+</html>
