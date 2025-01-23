@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // A prototype is like a parent object.
+        // If you make an object literal, its prototype will be an object called 'Object.prototype'.
+        // The prototype of an object that is an instance of 'Date()' is 'Date.prototype'.
+        // The prototype of 'Date.prototype' is 'Object.prototype'.
+
+        // Setting a prototype using 'Object.create()'
+        const personPrototype = {
+            greet() {
+                console.log("hello!");
+            },
+        };
+
+        const carl = Object.create(personPrototype);
+        carl.greet(); // hello!
+
+        /*
+        Setting a prototype using a constructor: 
+        In JavaScript, all functions have a property named prototype. When you call a function as a 
+        constructor, this property is set as the prototype of the newly constructed object (by 
+        convention, in the property named __proto__). 
+        
+        So if we set the prototype of a constructor, we can ensure that all objects created with 
+        that constructor are given that prototype:
+        */
+        const personPrototype2 = {
+            greet() {
+                console.log(`hello, my name is ${this.name}!`);
+            },
+        };
+
+        function Person(name) {
+            this.name = name;
+        }
+
+        Object.assign(Person.prototype, personPrototype2);
+        // or
+        // Person.prototype.greet = personPrototype.greet;
+
+        const reuben = new Person("Reuben");
+        reuben.greet(); // hello, my name is Reuben!
+
+        // Check if a property is an object's or its prototype's with Object.hasOwn()
+        const irma = new Person("Irma");
+
+        console.log(Object.hasOwn(irma, "name")); // true
+        console.log(Object.hasOwn(irma, "greet")); // false
+    </script>
+</body>
+
+</html>
