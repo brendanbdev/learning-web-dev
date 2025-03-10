@@ -99,7 +99,7 @@
 
         (30em <= width <= 50em)
 
-        You can also use "or" logic using a comma. In the below example the text will be blue if the 
+        You can also use "or" logic using a comma. In the example below, the text will be blue if the 
         viewport is at least 600 pixels wide OR the device is in landscape orientation:
 
         @media screen and (min-width: 600px), screen and (orientation: landscape) {
@@ -118,9 +118,8 @@
             }
         }
 
-        You can also use not to negate specific expressions. This will apply the styles if the 
-        viewport width is between 600 and 1000 pixels. This is equivalent to 
-        (600px <= width <= 1000px).
+        You can also use not to negate specific expressions. This will apply the styles if the viewport 
+        width is between 600 and 1000 pixels. This is equivalent to (600px <= width <= 1000px).
 
         @media (not (width < 600px)) and (not (width > 1000px)) {
             body {
@@ -205,6 +204,10 @@
                 grid-template-columns: 3fr 1fr;
                 column-gap: 20px;
             }
+
+            body {
+                color: red;
+            }
         }
 
         @media screen and (min-width: 70em) {
@@ -223,6 +226,10 @@
             footer {
                 border-top: 1px solid #ccc;
                 margin-top: 2em;
+            }
+
+            body {
+                color: blue;
             }
         }
     </style>
