@@ -36,7 +36,11 @@
     Here, <section> is the 'flex container' when we add the declaration 'display: flex;', and the 
     <article>s inside of the <section> are the 'flex items'. 
     */
-    section {
+    section.one {
+      display: flex;
+    }
+
+    section.two {
       display: flex;
     }
 
@@ -46,26 +50,24 @@
     flex: <flex-grow> <flex-shrink> <flex-basis>;
     
     flex-grow: A unitless proportion value that dictates how much the element can grow relative to 
-    others.
+    others as it gets larger than the flex-basis value.
     flex-shrink: A unitless proportion value that dictates how much the element can shrink relative 
-    to others.
+    to others as it gets smaller than the flex-basis value.
     flex-basis: The initial size of the element before growing or shrinking.
 
     If you omit flex-shrink and flex-basis, default values (1 and auto, respectively) are used.
-
-    Here, we are omitting the flex-shrink value.
-
-    Basically, the items start at 200px, and the amount they grow as the window widens is proportioned 
-    by the flex-grow values.
     */
     article {
-      flex: 1 200px;
+      flex: 1 300px;
     }
 
-    article:nth-of-type(3) {
-      flex: 2 200px;
+    section.one article:nth-of-type(3) {
+      flex: 2 300px;
     }
-    
+
+    section.two article:nth-of-type(3) {
+      flex: 3 3 300px;
+    }
   </style>
 </head>
 
@@ -74,9 +76,9 @@
     <h1>Sample flexbox example</h1>
   </header>
 
-  <section>
+  <section class="one">
     <article>
-      <h2>First article</h2>
+      <h2>Section One: First article</h2>
 
       <p>Tacos actually microdosing, pour-over semiotics banjo chicharrones retro fanny pack portland everyday carry
         vinyl typewriter. Tacos PBR&B pork belly, everyday carry ennui pickled sriracha normcore hashtag polaroid
@@ -85,7 +87,7 @@
     </article>
 
     <article>
-      <h2>Second article</h2>
+      <h2>Section One: Second article</h2>
 
       <p>Tacos actually microdosing, pour-over semiotics banjo chicharrones retro fanny pack portland everyday carry
         vinyl typewriter. Tacos PBR&B pork belly, everyday carry ennui pickled sriracha normcore hashtag polaroid
@@ -94,16 +96,41 @@
     </article>
 
     <article>
-      <h2>Third article</h2>
+      <h2>Section One: Third article</h2>
 
       <p>Tacos actually microdosing, pour-over semiotics banjo chicharrones retro fanny pack portland everyday carry
         vinyl typewriter. Tacos PBR&B pork belly, everyday carry ennui pickled sriracha normcore hashtag polaroid
         single-origin coffee cold-pressed. PBR&B tattooed trust fund twee, leggings salvia iPhone photo booth health
         goth gastropub hammock.</p>
+    </article>
+  </section>
 
-      <p>Cray food truck brunch, XOXO +1 keffiyeh pickled chambray waistcoat ennui. Organic small batch paleo 8-bit.
-        Intelligentsia umami wayfarers pickled, asymmetrical kombucha letterpress kitsch leggings cold-pressed squid
-        chartreuse put a bird on it. Listicle pickled man bun cornhole heirloom art party.</p>
+  <section class="two">
+    <article>
+      <h2>Section Two: First article</h2>
+
+      <p>Tacos actually microdosing, pour-over semiotics banjo chicharrones retro fanny pack portland everyday carry
+        vinyl typewriter. Tacos PBR&B pork belly, everyday carry ennui pickled sriracha normcore hashtag polaroid
+        single-origin coffee cold-pressed. PBR&B tattooed trust fund twee, leggings salvia iPhone photo booth health
+        goth gastropub hammock.</p>
+    </article>
+
+    <article>
+      <h2>Section Two: Second article</h2>
+
+      <p>Tacos actually microdosing, pour-over semiotics banjo chicharrones retro fanny pack portland everyday carry
+        vinyl typewriter. Tacos PBR&B pork belly, everyday carry ennui pickled sriracha normcore hashtag polaroid
+        single-origin coffee cold-pressed. PBR&B tattooed trust fund twee, leggings salvia iPhone photo booth health
+        goth gastropub hammock.</p>
+    </article>
+
+    <article>
+      <h2>Section Two: Third article</h2>
+
+      <p>Tacos actually microdosing, pour-over semiotics banjo chicharrones retro fanny pack portland everyday carry
+        vinyl typewriter. Tacos PBR&B pork belly, everyday carry ennui pickled sriracha normcore hashtag polaroid
+        single-origin coffee cold-pressed. PBR&B tattooed trust fund twee, leggings salvia iPhone photo booth health
+        goth gastropub hammock.</p>
     </article>
   </section>
 </body>

@@ -18,7 +18,16 @@
 
         @media (min-width: 40em) {
             body {
-                grid: 'header header' auto 'nav main' 1fr 'nav footer' auto / 12em 1fr;
+                grid: 
+                'header header' auto
+                /* '1f makes this row take up 1 fraction of the remaining space, but in this case, this 
+                effectively means that this row takes up all available space because the other rows are 
+                'auto' */
+                'nav main' 1fr
+                'nav footer' auto
+                /* This means that the first column is 12em wide (fixed width). The second column takes 
+                up 1fr (remaining space). */
+                / 12em 1fr;
             }
         }
 

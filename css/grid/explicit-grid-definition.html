@@ -31,10 +31,13 @@
             display: grid;
             /* (fr stands for fraction) "repeat(2, 1fr)" = "1fr 1fr" */
             grid-template-columns: 2fr repeat(2, 1fr);
-            /* Explicitly generating two rows each 100px tall. */
+            /* Explicitly generating the first two rows to each be 100px tall. */
             grid-template-rows: 100px 100px;
-            /* Subsequent implicitly generated rows (auto rows) because of inadequate width to fit all 
-            grid items will be min 200px tall. */
+            /* Making the subsequent implicitly generated rows (auto rows, as opposed to template rows 
+            which we created above) min 200px tall. These rows will be generated when there are more 
+            grid items than what can fit in the defined grid. We made three columns (2fr repeat(2, 1fr), 
+            or 2fr 1fr 1fr) and two rows (100px 100px), so, that's only 6 grid items. Every item after 
+            that, in the third row and beyond, will be in these auto rows defined here. */
             grid-auto-rows: minmax(200px, auto);
             gap: 20px;
         }
