@@ -45,7 +45,7 @@ provides methods to handle the eventual success or failure of the operation.
         Started request…
         Received response: 200 
 
-        Note that Started request… is logged before we receive the response. Unlike a synchronous 
+        Note that "Started request…" is logged before we receive the response. Unlike a synchronous 
         function, fetch() returns while the request is still going on, enabling our program to stay 
         responsive. The response shows the 200 (OK) status code, meaning that our request succeeded.
         */
@@ -66,9 +66,7 @@ provides methods to handle the eventual success or failure of the operation.
         // Write it like this:
         const fetchPromiseChaining = fetch(
             "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
-        );
-
-        fetchPromiseChaining
+        )
             .then((response) => response.json())
             .then((data) => {
                 console.log(`${data[0].name} - from Promise Chaining`);
@@ -77,9 +75,7 @@ provides methods to handle the eventual success or failure of the operation.
         // Checking the status code in the response and throwing an error if it wasn't "OK".
         const fetchPromiseAndCheckStatus = fetch(
             "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
-        );
-
-        fetchPromiseAndCheckStatus
+        )
             .then((response) => {
                 // Status codes 200–299 are "ok", everything else is not.
                 if (!response.ok) {
@@ -100,9 +96,7 @@ provides methods to handle the eventual success or failure of the operation.
         fail. */
         const fetchPromiseAndUseCatch = fetch(
             "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
-        );
-
-        fetchPromiseAndUseCatch
+        )
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(`HTTP error: ${response.status}`);
